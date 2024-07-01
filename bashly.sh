@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 
-if [[ "$(basename -- "$0")" == "bashly.sh" ]]; then
+if [[ "$(basename -- "$0")" != "bashly.sh" ]]; then
     >&2 echo "Cannot be run. Use source $0"
     exit 1
 fi
 
 unset BASHLY_PATH
-export BASHLY_PATH=$PWD/sources
+export BASHLY_PATH="$(cd "$(dirname "$0")"; pwd)/sources"
 
 function import() {
     package=$1

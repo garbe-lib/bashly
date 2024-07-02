@@ -33,6 +33,15 @@ function array.pop() {
     done
 }
 
+function array.popn() {
+    local -n __refdata_array=__$1
+    shift
+    local _n=$1
+    for (( _i=0; _i<$_n;++_i )); do
+        unset __refdata_array[-1]
+    done
+}
+
 function array.push() {
     local -n __refdata_array=__$1
     shift 1
@@ -50,4 +59,19 @@ function array.foreach() {
     for item in ${__refdata_array[*]};do
         $1 $item
     done
+}
+
+function array.print() {
+    local -n __refdata_array=__$1
+    echo "[ ${__refdata_array[@]} ]"
+}
+
+function array.len() {
+    local -n __refdata_array=__$1
+    echo ${#__refdata_array[@]}
+}
+
+function array.get() {
+    local -n __refdata_array=__$1
+    echo ${__refdata_array[$2]}
 }

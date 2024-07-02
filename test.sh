@@ -6,6 +6,8 @@ source ./common.sh
 echo "Running tests..."
 
 for unit in ./test/*; do
-    echo -e "\x1b[34;1mTest unit $unit\x1b[0m"
-    source $unit
+    if [ -f $unit ]; then
+        echo -e "\x1b[34;1mTest unit $unit\x1b[0m"
+        source $unit
+    fi
 done

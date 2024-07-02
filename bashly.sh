@@ -1,7 +1,9 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-if [[ "$(basename -- "$0")" != "bashly.sh" ]]; then
+if [[ "$(basename -- "$0")" == "bashly.sh" ]]; then
     >&2 echo "Cannot be run. Use source $0"
+    #echo $0
+    #echo $(basename -- "$0")
     exit 1
 fi
 

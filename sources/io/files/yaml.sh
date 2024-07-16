@@ -1,4 +1,12 @@
 import array
+function _strip_quotes(){
+    value=$@ 
+    if [[ $value == \"*\" ]]; then
+        #value=${value#\"}
+        value=${value:1:-1}
+    fi
+    echo "$value"
+}
 
 function parse_yaml(){
     # Missing features / TODO
@@ -106,12 +114,15 @@ function parse_yaml(){
             path="$($pointer values)"
             value=${line#-}
             value="${value##[[:space:]]}"
+            value=$(_strip_quotes $value)
+            
             parsed["${path//[[:space:]]/,}$arraycount"]="$value"
             #echo "$path[$arraycount] -> $value"
             let ++arraycount
         else
             value="${line#*"$delimiter"}"
             value="${value##[[:space:]]}"
+            value=$(_strip_quotes $value)
 
             $pointer popn 1
             $pointer push $fieldname

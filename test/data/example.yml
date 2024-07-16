@@ -1,0 +1,26 @@
+time: 0430 
+# Users
+user:
+  alice:
+    name: "Alice Cooper"
+  bob:
+    name: "King Bob"
+foo:
+  - ab # test
+  - cd 12
+  - ef : 3456!
+python: 3.5.3
+postgres: 9.3
+folding1: >
+  bla bla bla 1
+  bla bla 2
+  bla 3
+folding2: >+
+  a simple text
+  to test folding 2
+folding3: >-
+  a simple text
+  to test folding 3
+folding4: |
+  haha
+closure: "test"

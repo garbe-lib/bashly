@@ -50,24 +50,20 @@ function parse_yaml(){
 
         if [[ $old_folding_mode != $folding_mode ]]; then
             case $old_folding_mode in
-                1)
-                    echo "1 -> 0"
-                    ;;
                 2)
-                    echo "2 -> 0"
-                    
                     value=${parsed[$folding_fieldname]}
                     value=${value/%[[:space:]]/"\n"}
                     parsed[$folding_fieldname]="$value"
                     ;;
                 3)
-                    echo "3 -> 0"
                     value=${parsed[$folding_fieldname]}
                     value=${value%%[[:space:]]}
                     parsed[$folding_fieldname]="$value"
                     ;;
                 4)
-                    echo "4 -> 0"
+                    value=${parsed[$folding_fieldname]}
+                    value=${value%%[[:space:]]}
+                    parsed[$folding_fieldname]="$value"
                     ;;
             esac
             old_folding_mode=$folding_mode
